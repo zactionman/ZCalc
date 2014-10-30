@@ -1,0 +1,14 @@
+ZCalc - A simple calculator.
+
+This program was written just to practice some python.
+It is a simple calculator with a GUI that allows a user to do math.
+
+Everything should be fairly self explanetory in this program.  Click
+on the number buttons to input a number then choose an operator.
+Click the number buttons to enter the second number and press '='
+to calculate the answer.
+
+Currently this program is missing a way to delete numbers and clear numbers.
+That should be easy enough to implement going forward, but because of the lack
+of these simple, but necessary, operations I am not going to call this version
+release 1.0.
