@@ -34,6 +34,8 @@ class App():
 		# For knowing when to clear entry widget. 0 for yes, 1 for no.
 		self.eclear = 0
 
+		self.MFrame.bind('<Enter>', lambda e: self.plchldr())
+		
 		# Buttons 1-3 for the calculator.
 		Button(self.MFrame, text=1, width=8, command=lambda: self.NumInput('1')).grid(column=0, row=3)
 		Button(self.MFrame, text=2, width=8, command=lambda: self.NumInput('2')).grid(column=1, row=3)
@@ -78,23 +80,26 @@ class App():
 	def OperInput(self, operation):
 		# If an operator has not already been chosen then set the operator.
 		if self.oper == 'No':
+			# Convert and store number1 as a float
 			self.number1 = float(self.number.get())
 			self.operation = operation	
 			self.eclear = 0
 			self.oper = 'Yes'
 
-			# For debugging reasons:
-			print ('number1 is: {0}'.format(self.number1))
-			print ('number2 is: {0}'.format(self.number2))
-		# If an operator has already been chosen do nothing when operator button is pressed.
 		else:
+			# If an operator has already been chosen do nothing when operator button is pressed.
 			pass
 
 	def GetCalc(self):
+		# Has an operator been chosen?
 		if self.oper == 'Yes':
+			# Convert number2 into a float
 			self.number2 = float(self.number.get())
+			# Call the function that actually calculates the answer
 			answer = ZMath.calculator(self.number1, self.number2, self.operation)
+			# Show the answer in the entry field
 			self.number.set(str(answer))
+			# Reset global variables
 			self.oper = 'No'
 			self.eclear = 0
 			self.dec = 'No'
