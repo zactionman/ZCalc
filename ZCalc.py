@@ -34,7 +34,7 @@ class App():
 		# For knowing when to clear entry widget. 0 for yes, 1 for no.
 		self.eclear = 0
 
-		self.MFrame.bind('<Enter>', lambda e: self.plchldr())
+		self.master.bind('<Delete>', lambda e: self.Backspace())
 		
 		# Buttons 1-3 for the calculator.
 		Button(self.MFrame, text=1, width=8, command=lambda: self.NumInput('1')).grid(column=0, row=3)
@@ -89,6 +89,26 @@ class App():
 		else:
 			# If an operator has already been chosen do nothing when operator button is pressed.
 			pass
+	
+	def Backspace(self):
+		entrysnap = self.number.get()
+		prune = entrysnap[-1]
+
+		if len(entrysnap) > 1 and prune != '.':
+			# Code to remove diget from entry when not pruning decimal
+			entrysnap = entrysnap[0:-1]
+			self.number.set(entrysnap)
+
+		elif len(entrysnap) > 1 and prune == '.':
+
+			# Code to remove decimal from entry
+			entrysnap = entrysnap[0:-1]
+			self.number.set(entrysnap)
+			self.dec = 'No'
+
+		else:
+			self.number.set('0')
+			self.eclear = 0
 
 	def GetCalc(self):
 		# Has an operator been chosen?

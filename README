@@ -8,7 +8,6 @@ on the number buttons to input a number then choose an operator.
 Click the number buttons to enter the second number and press '='
 to calculate the answer.
 
-Currently this program is missing a way to delete numbers and clear numbers.
-That should be easy enough to implement going forward, but because of the lack
-of these simple, but necessary, operations I am not going to call this version
-release 1.0.
+There is no delete button in the main app.  However, pressing the 'Delete'
+button on the keyboard causes the last digit to be removed from the entry
+and thus the calculation.
